@@ -9,7 +9,9 @@ firstDigitInNumber = ('4', '5', '6')
 
 for creditCardNumber in creditCardNumbers:
     if creditCardNumber.strip().startswith(firstDigitInNumber):
-        if re.match(r'(\d{4}-){3}\d{4}', creditCardNumber.strip()):
+        if re.search(r'(\d)\1{3}', creditCardNumber.replace('-', '').strip()):
+            print("invalid ")
+        elif re.match(r'(\d{4}-){3}\d{4}', creditCardNumber.strip()):
             print("valid ")
         elif re.match(r'\d{16}', creditCardNumber.strip()):
             print("valid ")
